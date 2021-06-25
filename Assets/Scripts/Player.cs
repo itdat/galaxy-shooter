@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float bottomBound = -4.0f;
     [SerializeField] private float leftBound = -11.0f;
     [SerializeField] private float rightBound = 11.0f;
-
+    [SerializeField] private GameObject lazerPrefab;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         CalculateMovement();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(lazerPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     void CalculateMovement()
